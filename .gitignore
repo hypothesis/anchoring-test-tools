@@ -1,0 +1,8 @@
+node_modules/
+
+# Output of `bin/fetch-annotated-pdf-urls`.
+url-list.txt
+url-info-cache.json
+
+# Output of `bin/evaluate`.
+evaluate-results.*

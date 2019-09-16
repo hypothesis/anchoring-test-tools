@@ -1,0 +1,29 @@
+{
+  "name": "anchor-test",
+  "version": "1.0.0",
+  "description": "Anchoring test tool",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --list-different --write **/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypothesis/anchor-test.git"
+  },
+  "author": "Robert Knight <robertknight@gmail.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/hypothesis/anchor-test/issues"
+  },
+  "homepage": "https://github.com/hypothesis/anchor-test#readme",
+  "dependencies": {
+    "commander": "^3.0.1",
+    "node-fetch": "^2.6.0",
+    "puppeteer": "^1.20.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.4.0"
+  }
+}
