@@ -186,32 +186,54 @@ class AnchoringTester {
     // Maximum amount of time to wait for anchoring to complete.
     const timeout = 30000;
 
-    let annotationCount = null;
-    let orphanCount = null;
+    // Maximum amount of time to wait for anchoring to complete once at least
+    // one highlight has appeared in the page.
+    //
+    // This is shorter to avoid waiting too long once the client has loaded if
+    // the eventual number of highlights never matches the number of annotations.
+    const highlightChangeTimeout = 5000;
 
+    // Counts displayed on the tabs in the sidebar.
     let tabCounts;
+
+    // Number of annotations which have at least one highlight in the page.
     let highlightCount;
+
+    let prevHighlightCountChangeTime = Date.now();
 
     while (
       Date.now() - startTime < timeout &&
       // If `annotationCount` is null then the annotation counts have not yet
       // been displayed on the tabs. If there are fewer highlights in the page
       // than annotations then anchoring is still in progress.
-      (annotationCount == null || highlightCount < annotationCount)
+      (tabCounts == null || highlightCount < tabCounts.annotationCount)
     ) {
       await delay(50);
+
+      let prevHighlightCount = highlightCount;
 
       [tabCounts, highlightCount] = await Promise.all([
         sidebarFrame.evaluate(getAnnotationTabCounts),
         page.evaluate(countHighlightsInPage),
       ]);
 
-      if (tabCounts) {
-        annotationCount = tabCounts.annotationCount;
-        orphanCount = tabCounts.orphanCount;
+      if (highlightCount > 0) {
+        if (prevHighlightCount !== highlightCount) {
+          prevHighlightCountChangeTime = Date.now();
+        } else if (
+          Date.now() - prevHighlightCountChangeTime >
+          highlightChangeTimeout
+        ) {
+          console.log(
+            `Highlight count stopped changing after ${highlightChangeTimeout} ms`
+          );
+          break;
+        }
       }
     }
     const anchorTime = Date.now() - startTime;
+
+    const { annotationCount = null, orphanCount = null } = tabCounts || {};
 
     if (anchorTime > timeout) {
       console.log(
