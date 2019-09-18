@@ -32,6 +32,9 @@ async function main() {
 
   program
     .version('1.0.0')
+    .description(
+      'Load URLs with Hypothesis active and count anchored/orphaned annotations'
+    )
     .arguments('<url-list> <mode>')
     .action((urlList_, mode_) => {
       urlList = urlList_;
