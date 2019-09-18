@@ -42,8 +42,6 @@ async function request(route, params = {}) {
     requestUrl.searchParams.append(param, params[param]);
   });
 
-  console.log(`Sending request ${requestUrl.href}`);
-
   const result = await fetch(requestUrl.href, { agent, method });
   if (result.status < 200 || result.status >= 500) {
     throw new Error('Request failed');
