@@ -93,17 +93,39 @@ function writeUrlInfoCache(cachePath, { accessiblePdfCache }) {
   fs.writeFileSync(cachePath, JSON.stringify(data, null, 2));
 }
 
+/**
+ * Entry point for `bin/fetch-annotated-pdf-urls`.
+ */
 async function main() {
-  program.version('1.0.0');
+  program
+    .version('1.0.0')
+    .description('Fetch URLs of PDFs with public annotations')
+    .option('-o, --output <path>', 'output file path', 'url-list.txt')
+    .option(
+      '--min-annotations <count>',
+      'minimum number of annotations',
+      val => parseInt(val),
+      10
+    )
+    .option(
+      '--max-urls <count>',
+      'max number of URLs to find',
+      val => parseInt(val),
+      300
+    )
+    .option('--query <query>', 'search query', 'pdf')
+    .option(
+      '--before <iso-date>',
+      'start date for reverse-chronological search'
+    );
+
   program.parse(process.argv);
 
-  // Map of URI to number of annotations.
-  let annotationCounts = new Map();
-  let searchAfter = '';
+  let searchAfter = program.before || '';
   const sortField = 'created';
 
   // File to write the list of qualifying URLs to.
-  const outputFile = 'url-list.txt';
+  const outputFile = program.output;
 
   // File where candidate URL fetch results are cached.
   const cacheFile = 'url-info-cache.json';
@@ -113,11 +135,10 @@ async function main() {
 
   // Minimum number of annotations a URL must have before it is included in the
   // result set.
-  let minAnnotations = 10;
+  let minAnnotations = program.minAnnotations;
 
   // Maximum number of URLs to return.
-  const maxUris = 300;
-  let urisWithEnoughAnnotations = [];
+  const maxUris = program.maxUrls;
 
   // Number of annotations examined so far.
   let processed = 0;
@@ -125,17 +146,21 @@ async function main() {
   // Map of URI to boolean indicating whether URL is a publicly accessible PDF.
   const { accessiblePdfCache } = readUrlInfoCache(cacheFile);
   if (accessiblePdfCache.size > 0) {
-    console.log(`Read cached info about ${accessiblePdfCache.size} files`);
+    console.log(`Read cached info about ${accessiblePdfCache.size} URLs`);
   }
 
   // Search query to use to find candidates.
-  const searchQuery = '';
+  const searchQuery = program.query;
 
   // Metric counters.
   const counters = new CounterSet();
 
+  // Map of URI to number of annotations.
+  let annotationCounts = new Map();
+  let urisWithEnoughAnnotations = [];
+
   console.log(
-    `Finding annotated URLs matching "${searchQuery}" and writing to ${outputFile}`
+    `Finding up to ${maxUris} URLs with at least ${minAnnotations} annotations matching query "${searchQuery}". Output file: ${outputFile}`
   );
 
   // Find URLs with enough public annotations.
@@ -193,7 +218,6 @@ async function main() {
         console.log(`Checking if ${row.uri} is accessible and is a PDF`);
         const isAccessible = await isPubliclyAccessiblePdf(row.uri, counters);
         accessiblePdfCache.set(row.uri, isAccessible);
-        console.log(`${row.uri} is a public PDF: ${isAccessible}`);
       }
       if (!accessiblePdfCache.get(row.uri)) {
         continue;
@@ -225,7 +249,7 @@ async function main() {
     console.log(
       `Found ${
         urisWithEnoughAnnotations.length
-      } PDF URLs with ${minAnnotations} annotations after processing ${processed} annotations`
+      } PDF URLs with at least ${minAnnotations} annotations. Processed ${processed} annotations.`
     );
 
     // Write out the cache so we can resume searches quickly in future if an
