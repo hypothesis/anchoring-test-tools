@@ -20,6 +20,7 @@
   "homepage": "https://github.com/hypothesis/anchor-test#readme",
   "dependencies": {
     "commander": "^3.0.1",
+    "json-diff": "^0.5.4",
     "node-fetch": "^2.6.0",
     "puppeteer": "^1.20.0"
   },

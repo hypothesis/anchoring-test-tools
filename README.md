@@ -23,6 +23,13 @@ directory. Run `bin/<tool name> --help` for available flags.
 All tools update their output and cache files incrementally, so it is safe to
 interrupt them while they are running.
 
+Typical usage is as follows:
+
+1. Generate a list of URLs to test using `bin/fetch-annotated-pdf-urls`, or
+   use one of the existing lists in the `data/` directory.
+2. Run anchoring tests using `bin/evaluate`
+3. Compare the results from different runs using `bin/diff`
+
 ### `bin/fetch-annotated-pdf-urls`
 
 Fetches URLs of PDFs which have public annotations in Hypothesis.
@@ -55,9 +62,17 @@ how to load each URL in the document set with the Hypothesis client active.
 The output will be a JSON file that maps URLs to statistics about the number
 of annotations that successfully anchor or fail to anchor ("orphans").
 
-The keys in the JSON file are in sorted order, so the results of test runs with
-the same input URL list but different modes or other flags can be compared using
-text-based diff tools such as `diff`.
+The JSON output can be compared with the `bin/diff` tool.
+
+### `bin/diff`
+
+Compare the results of two runs of `bin/evaluate`. Unlike a simple text
+comparison using `diff`, this tool is JSON-aware and it also ignores fields
+which are expected to differ between runs, such as timing information.
+
+```
+bin/diff [flags] <file-1> <file-2>
+```
 
 #### URL lists
 
