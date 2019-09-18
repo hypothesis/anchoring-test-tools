@@ -64,16 +64,6 @@ of annotations that successfully anchor or fail to anchor ("orphans").
 
 The JSON output can be compared with the `bin/diff` tool.
 
-### `bin/diff`
-
-Compare the results of two runs of `bin/evaluate`. Unlike a simple text
-comparison using `diff`, this tool is JSON-aware and it also ignores fields
-which are expected to differ between runs, such as timing information.
-
-```
-bin/diff [flags] <file-1> <file-2>
-```
-
 #### URL lists
 
 The `<url-list>` argument should be the path of a text file containing
@@ -86,6 +76,16 @@ Available `<mode>` argument values are:
 
 `via` - Use https://via.hypothes.is/
 `via-pdfjs2` - Same as `via` but with the `via.features=pdfjs2` query param added
+
+### `bin/diff`
+
+Compare the results of two runs of `bin/evaluate`. Unlike a simple text
+comparison using `diff`, this tool is JSON-aware and it also ignores fields
+which are expected to differ between runs, such as timing information.
+
+```
+bin/diff [flags] <file-1> <file-2>
+```
 
 ## Related projects
 
