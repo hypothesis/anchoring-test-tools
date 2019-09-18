@@ -1,5 +1,7 @@
 'use strict';
 
+/* global Promise, Set */
+
 const puppeteer = require('puppeteer');
 
 // List of console messages from the sidebar or parent frame to ignore.
@@ -16,6 +18,10 @@ const IGNORED_CONSOLE_MESSAGES = [
   /PDF.js: [0-9.]+/,
 ];
 
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 /**
  * @typedef {Result}
  * @prop {number} annotationCount
@@ -26,9 +32,10 @@ const IGNORED_CONSOLE_MESSAGES = [
  * Read the counts displayed on the "Annotations" and "Orphans" tabs in the
  * Hypothesis client's sidebar, or `null` if the counts are not visible.
  *
- * This is executed in the context of the Hypothesis client's sidebar.
+ * This is executed in the context of the Hypothesis client's sidebar. It cannot
+ * have external dependencies.
  */
-function getAnnotationAndOrphanCounts() {
+function getAnnotationTabCounts() {
   const tabsEl = document.querySelector('selection-tabs');
   if (!tabsEl) {
     return null;
@@ -60,6 +67,49 @@ function getAnnotationAndOrphanCounts() {
     annotationCount,
     orphanCount,
   };
+}
+
+/**
+ * Return the number of annotation highlights that exist in a document.
+ *
+ * This function is executed in the context of a page displaying content that
+ * has been annotated. It cannot have external dependencies.
+ */
+function countHighlightsInPage() {
+  // Fetch a jQuery data property associated with an element. This is
+  // equivalent to doing `$(element).data(key)`.
+  function getJQueryData(element, key) {
+    const jqDataKey = Object.keys(element).find(key =>
+      key.startsWith('jQuery')
+    );
+    if (!jqDataKey) {
+      return null;
+    }
+    const jqData = element[jqDataKey];
+    if (!jqData) {
+      return null;
+    }
+    return jqData[key];
+  }
+
+  // Get the temporary local ID assigned to the annotation (the "tag") which
+  // a highlight is associated with.
+  function getAnnotationTag(highlight) {
+    const annotation = getJQueryData(highlight, 'annotation');
+    return annotation ? annotation.$tag : null;
+  }
+
+  // Find all the rendered highlight spans in the DOM. There may be multiple
+  // highlight elements per annotation, or none if an annotation was not found.
+  const highlights = Array.from(
+    document.querySelectorAll('hypothesis-highlight')
+  );
+
+  // Get the associated local annotation IDs.
+  const tags = highlights.map(getAnnotationTag).filter(tag => tag !== null);
+  const uniqueTags = new Set(tags);
+
+  return uniqueTags.size;
 }
 
 /**
@@ -119,28 +169,65 @@ class AnchoringTester {
     }
   }
 
+  /**
+   * Wait for anchoring to complete and return the count of annotations and
+   * orphans.
+   *
+   * @param {puppeteer.Page} page
+   */
   async _getAnchorResults(page) {
     const sidebar = await page.waitForSelector(
       'iframe[name="hyp_sidebar_frame"]'
     );
     const sidebarFrame = await sidebar.contentFrame();
 
-    const resultsHandle = await sidebarFrame.waitForFunction(
-      getAnnotationAndOrphanCounts,
-      {
-        polling: 50,
+    const startTime = Date.now();
 
-        // Maximum amount of time to wait for PDF to load, sidebar to appear
-        // and annotation/orphan counts to be displayed at the top of the
-        // sidebar.
-        timeout: 20000,
+    // Maximum amount of time to wait for anchoring to complete.
+    const timeout = 30000;
+
+    let annotationCount = null;
+    let orphanCount = null;
+
+    let tabCounts;
+    let highlightCount;
+
+    while (
+      Date.now() - startTime < timeout &&
+      // If `annotationCount` is null then the annotation counts have not yet
+      // been displayed on the tabs. If there are fewer highlights in the page
+      // than annotations then anchoring is still in progress.
+      (annotationCount == null || highlightCount < annotationCount)
+    ) {
+      await delay(50);
+
+      [tabCounts, highlightCount] = await Promise.all([
+        sidebarFrame.evaluate(getAnnotationTabCounts),
+        page.evaluate(countHighlightsInPage),
+      ]);
+
+      if (tabCounts) {
+        annotationCount = tabCounts.annotationCount;
+        orphanCount = tabCounts.orphanCount;
       }
-    );
-    const resultsValue = await resultsHandle.jsonValue();
-    const { annotationCount, orphanCount } = resultsValue;
+    }
+    const anchorTime = Date.now() - startTime;
+
+    if (anchorTime > timeout) {
+      console.log(
+        `Failed to count annotations in page in ${timeout} ms. Annotation tab: ${annotationCount}. Orphan tab: ${orphanCount}. Highlights: ${highlightCount}`
+      );
+    } else {
+      console.log(
+        `Anchoring completed with ${annotationCount} annotations and ${orphanCount} orphans`
+      );
+    }
+
     return {
       annotationCount,
+      highlightCount,
       orphanCount,
+      anchorTime,
     };
   }
 
