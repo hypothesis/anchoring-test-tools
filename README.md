@@ -55,13 +55,17 @@ how to load each URL in the document set with the Hypothesis client active.
 The output will be a JSON file that maps URLs to statistics about the number
 of annotations that successfully anchor or fail to anchor ("orphans").
 
+The keys in the JSON file are in sorted order, so the results of test runs with
+the same input URL list but different modes or other flags can be compared using
+text-based diff tools such as `diff`.
+
 #### URL lists
 
 The `<url-list>` argument should be the path of a text file containing
 a list of URLs, one per line. Blank lines and lines beginning with '#' are
 ignored.
 
-#### Mode strings
+#### Modes
 
 Available `<mode>` argument values are:
 

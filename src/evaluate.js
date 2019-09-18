@@ -35,6 +35,12 @@ async function main() {
     .description(
       'Load URLs with Hypothesis active and count anchored/orphaned annotations'
     )
+    .option(
+      '--output <file>',
+      'output file for results',
+      'evaluate-results.json'
+    )
+    .option('--resume', 'resume a previous run')
     .arguments('<url-list> <mode>')
     .action((urlList_, mode_) => {
       urlList = urlList_;
@@ -42,7 +48,7 @@ async function main() {
     });
   program.parse(process.argv);
 
-  const outputFile = 'evaluate-results.json';
+  const outputFile = program.output;
 
   // Check args.
   if (!urlList) {
@@ -57,15 +63,32 @@ async function main() {
   // Run anchoring tests.
   const urls = readUrlList(urlList);
   const tester = new AnchoringTester();
-  const results = {};
-  let processed = 0;
+  let results = {};
+  if (program.resume) {
+    console.log(`Resuming previous run from results in ${outputFile}`);
+    results = JSON.parse(fs.readFileSync(outputFile));
+  }
+  let processed = Object.keys(results).length;
+
+  console.log(
+    `Testing ${urls.length} URLs with ${mode}. Output file: ${outputFile}`
+  );
+
   for (let url of urls) {
-    console.debug(`Testing ${url} with ${mode}`);
+    if (url in results) {
+      // URL duplicated or tested in a previous run.
+      continue;
+    }
+
+    console.debug(`Testing ${url}`);
     try {
       const result = await tester.runTest(url, mode);
       results[url] = result;
     } catch (err) {
-      console.error(`Failed to test ${url}:`, err);
+      console.error(`Failed to test ${url}:`, err.message);
+      results[url] = {
+        error: err.message,
+      };
     }
     ++processed;
     console.log(`Processed ${processed} of ${urls.length} URLs`);
