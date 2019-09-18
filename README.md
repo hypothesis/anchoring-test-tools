@@ -1,5 +1,5 @@
-This is a collection of tools for evaluating Hypothesis annotation _anchoring_
-using real annotations created by Hypothesis users in public groups.
+A collection of tools for evaluating Hypothesis annotation _anchoring_ using
+real annotations created by Hypothesis users in public groups.
 
 _anchoring_ is the process of matching a serialized description of a region
 of a document stored with an annotation to the corresponding part of the
@@ -18,7 +18,10 @@ npm install
 ```
 
 After installing dependencies, you can run the individual tools in the `bin/`
-directory:
+directory. Run `bin/<tool name> --help` for available flags.
+
+All tools update their output and cache files incrementally, so it is safe to
+interrupt them while they are running.
 
 ### `bin/fetch-annotated-pdf-urls`
 
@@ -33,7 +36,7 @@ reverse-chronological order and finds HTTP(S) URLs with a minimum number of
 public annotations where the path ends in ".pdf" and the URL is publicly
 accessible and returns a file with the correct MIME type for a PDF.
 
-The URLs are written to a `url-list.txt` text file.
+The URLs found are written to a text file (`url-list.txt` by default).
 
 Testing whether a URL is accessible is slow, so a cache of this information is
 created in `url-info-cache.json` to speed up repeated searches.
@@ -64,10 +67,6 @@ Available `<mode>` argument values are:
 
 `via` - Use https://via.hypothes.is/
 `via-pdfjs2` - Same as `via` but with the `via.features=pdfjs2` query param added
-
-#### Flags
-
-There are currently no flags supported.
 
 ## Related projects
 
