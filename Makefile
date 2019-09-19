@@ -9,8 +9,8 @@ lint: node_modules/.uptodate
 
 .PHONY: test
 test:
-	test/e2e/test-fetch-annotated-pdf-urls >/dev/null
-	test/e2e/test-evaluate > /dev/null
+	test/e2e/test-fetch-annotated-pdf-urls
+	test/e2e/test-evaluate
 	test/e2e/test-diff
 
 node_modules/.uptodate: package-lock.json
