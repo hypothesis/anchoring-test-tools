@@ -30,6 +30,8 @@ Typical usage is as follows:
 2. Run anchoring tests using `bin/evaluate`
 3. Compare the results from different runs using `bin/diff`
 
+See the *Development* section below if you plan to make changes to the tools.
+
 ### `bin/fetch-annotated-pdf-urls`
 
 Fetches URLs of PDFs which have public annotations in Hypothesis.
@@ -85,6 +87,17 @@ which are expected to differ between runs, such as timing information.
 
 ```
 bin/diff [flags] <file-1> <file-2>
+```
+
+## Development
+
+This repository includes some basic end-to-end tests for the tools, as well
+as formatting and lint checks.
+
+After making changes to the code, run automated checks using:
+
+```
+make format lint test
 ```
 
 ## Related projects
