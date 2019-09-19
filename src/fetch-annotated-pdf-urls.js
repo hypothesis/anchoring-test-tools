@@ -1,7 +1,5 @@
 'use strict';
 
-/* global Map */
-
 const fs = require('fs');
 const https = require('https');
 

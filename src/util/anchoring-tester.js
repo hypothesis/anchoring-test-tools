@@ -1,7 +1,5 @@
 'use strict';
 
-/* global Promise, Set */
-
 const puppeteer = require('puppeteer');
 
 // List of console messages from the sidebar or parent frame to ignore.
