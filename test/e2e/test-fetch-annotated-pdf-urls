@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Basic end-to-end test for `bin/fetch-annotated-pdf-urls`.
+# Exits with zero status if successful or non-zero otherwise.
+
+set -eu
+
+rm -rf /tmp/url-list.txt
+bin/fetch-annotated-pdf-urls -o /tmp/url-list.txt --min-annotations 2 --max-urls 2
+urls_found=$(cat /tmp/url-list.txt | wc -l)
+test $urls_found -eq 1

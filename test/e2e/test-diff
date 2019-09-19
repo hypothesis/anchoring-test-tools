@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Basic end-to-end test for `bin/diff`.
+# Exits with zero status if successful or non-zero otherwise.
+
+set -eu
+
+rm -rf /tmp/actual-diff
+bin/diff results/evaluate-results-sep-2019-pdfs.pdfjs1.json results/evaluate-results-sep-2019-pdfs.pdfjs2.json > /tmp/actual-diff
+cmp /tmp/actual-diff test/e2e/baselines/expected-diff-output

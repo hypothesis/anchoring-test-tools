@@ -41,6 +41,7 @@ async function main() {
       'evaluate-results.json'
     )
     .option('--resume', 'resume a previous run')
+    .option('--no-timing', 'do not record timing info')
     .arguments('<url-list> <mode>')
     .action((urlList_, mode_) => {
       urlList = urlList_;
@@ -62,7 +63,7 @@ async function main() {
 
   // Run anchoring tests.
   const urls = readUrlList(urlList);
-  const tester = new AnchoringTester();
+  const tester = new AnchoringTester({ timing: program.timing });
   let results = {};
   if (program.resume) {
     console.log(`Resuming previous run from results in ${outputFile}`);

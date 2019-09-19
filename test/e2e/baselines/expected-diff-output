@@ -1,0 +1,299 @@
+ {
+   http://www.umsl.edu/~alexanderjm/Mother%20Tongue%20by%20Tan.pdf: {
+[31m-    highlightCount: 72[39m
+[32m+    highlightCount: 71[39m
+   }
+   https://arxiv.org/pdf/1806.07572.pdf: {
+[31m-    annotationCount: 20[39m
+[32m+    annotationCount: 19[39m
+[31m-    highlightCount: 20[39m
+[32m+    highlightCount: 19[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://arxiv.org/pdf/1902.04760.pdf: {
+[31m-    highlightCount: 16[39m
+[32m+    highlightCount: 15[39m
+   }
+   https://blogs.baruch.cuny.edu/eng2100fall14blankenship/files/2014/09/Lu_FromSilencetoWords.pdf: {
+[31m-    annotationCount: 31[39m
+[31m-    highlightCount: 31[39m
+[31m-    orphanCount: 0[39m
+[32m+    error: "waiting for selector \"iframe[name=\"hyp_sidebar_frame\"]\" failed: timeout 30000ms exceeded"[39m
+   }
+   https://cdn.glitch.com/a4975a8b-b7f4-4319-974c-a14b2cee9f2e%2FAnn%20Baldelli%20Reading%20Module%201.pdf?1556129557026: {
+[31m-    highlightCount: 4[39m
+[32m+    highlightCount: 3[39m
+   }
+   https://clinicalgenome.org/site/assets/files/3975/gene-disease_validity_standard_operating_procedures_version_7.pdf: {
+[31m-    annotationCount: 21[39m
+[32m+    annotationCount: 5[39m
+[31m-    highlightCount: 21[39m
+[32m+    highlightCount: 4[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 16[39m
+   }
+   https://dfmi.dwrl.utexas.edu/wp-content/uploads/2019/06/Parikka_SensedSmog.pdf: {
+[31m-    annotationCount: 13[39m
+[32m+    annotationCount: 12[39m
+[31m-    highlightCount: 13[39m
+[32m+    highlightCount: 12[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://docdrop.org/static/drop-pdf/ARTWORLD-ROUNDTABLE_-THE-ART-OF-IMMORAL-ARTISTS-_-AESTHETICS-FOR-BIRDS-2gj9L.pdf: {
+[31m-    annotationCount: 30[39m
+[32m+    annotationCount: 29[39m
+[31m-    highlightCount: 30[39m
+[32m+    highlightCount: 29[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://docdrop.org/static/drop-pdf/Fundamentals-by-Lella-1--I8sdc.pdf: {
+[31m-    annotationCount: 55[39m
+[32m+    annotationCount: 54[39m
+[31m-    highlightCount: 55[39m
+[32m+    highlightCount: 47[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://docdrop.org/static/drop-pdf/Hmelo-Silver2004-ZZaX8.pdf: {
+[31m-    annotationCount: 22[39m
+[32m+    annotationCount: 21[39m
+[31m-    highlightCount: 22[39m
+[32m+    highlightCount: 21[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://docdrop.org/static/drop-pdf/mueller-report-mCVNz.pdf: {
+[31m-    annotationCount: null[39m
+[32m+    annotationCount: 37[39m
+[31m-    highlightCount: 0[39m
+[32m+    highlightCount: 24[39m
+[31m-    orphanCount: null[39m
+[32m+    orphanCount: 0[39m
+   }
+   https://educatorinnovator.org/wp-content/uploads/2019/02/LA_CriticalIndigenousLiteracies.pdf: {
+[31m-    annotationCount: 40[39m
+[32m+    annotationCount: 39[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://educatorinnovator.org/wp-content/uploads/2019/05/Watulak-et-al-2018.pdf: {
+[31m-    annotationCount: 31[39m
+[32m+    annotationCount: 28[39m
+[31m-    highlightCount: 31[39m
+[32m+    highlightCount: 28[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 3[39m
+   }
+   https://educatorinnovator.org/wp-content/uploads/2019/05/West-Puckett-et-al-2018.pdf: {
+[31m-    annotationCount: 14[39m
+[32m+    annotationCount: 13[39m
+[31m-    highlightCount: 14[39m
+[32m+    highlightCount: 13[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://engl22001.commons.gc.cuny.edu/wp-content/blogs.dir/6574/files/2019/03/Annotation1.pdf: {
+[31m-    highlightCount: 11[39m
+[32m+    highlightCount: 10[39m
+   }
+   https://fonet.ffzg.unizg.hr/kolegij/tinfo/weaver.pdf: {
+[31m-    annotationCount: 25[39m
+[32m+    annotationCount: 24[39m
+[31m-    highlightCount: 25[39m
+[32m+    highlightCount: 24[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://is.muni.cz/el/1423/podzim2013/SAN236/um/Lister_a_spol_New_Media_A_Critical_Introducion.pdf: {
+[31m-    annotationCount: 81[39m
+[32m+    annotationCount: 80[39m
+[31m-    highlightCount: 81[39m
+[32m+    highlightCount: 80[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://mseffie.com/assignments/invisible_man/Invisible%20Man%20-%20Full%20Text.pdf: {
+[31m-    highlightCount: 14[39m
+[32m+    highlightCount: 13[39m
+   }
+   https://newliteracies.uconn.edu/wp-content/uploads/sites/448/2014/07/Leu-D.J.-Zawilinski-L.-Forzani-E.-Timbrell-N.-in-press.pdf: {
+[31m-    annotationCount: 166[39m
+[32m+    annotationCount: 165[39m
+[31m-    highlightCount: 159[39m
+[32m+    highlightCount: 161[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://professordanongrades.files.wordpress.com/2019/08/amy-tan-mother-tongue.pdf: {
+[31m-    highlightCount: 72[39m
+[32m+    highlightCount: 71[39m
+   }
+   https://professordanongrades.files.wordpress.com/2019/08/trevor-noah-chameleon.pdf: {
+[31m-    highlightCount: 15[39m
+[32m+    highlightCount: 16[39m
+   }
+   https://r2l.sehd.net/wp-content/uploads/2019/08/Excerpts-from-Plessy-v-Ferguson-1896.pdf: {
+[31m-    annotationCount: 76[39m
+[31m-    highlightCount: 76[39m
+[31m-    orphanCount: 0[39m
+[32m+    error: "Navigation Timeout Exceeded: 30000ms exceeded"[39m
+   }
+   https://r2l.sehd.net/wp-content/uploads/2019/08/Excerpts-from-Plessy-v-Ferguson-1896_EDFN-1000.pdf: {
+[31m-    annotationCount: 76[39m
+[31m-    highlightCount: 76[39m
+[31m-    orphanCount: 0[39m
+[32m+    error: "Navigation Timeout Exceeded: 30000ms exceeded"[39m
+   }
+   https://rampages.us/miltonf19/wp-content/uploads/sites/34041/2019/09/Evans_Lycidas.pdf: {
+[31m-    error: "waiting for selector \"iframe[name=\"hyp_sidebar_frame\"]\" failed: timeout 30000ms exceeded"[39m
+[32m+    annotationCount: 11[39m
+[32m+    highlightCount: 11[39m
+[32m+    orphanCount: 0[39m
+   }
+   https://resources.chicagolx.org/clguide/connectedlearningguide-clx-public-comment-draft-3-4-19.pdf: {
+[31m-    annotationCount: 44[39m
+[32m+    annotationCount: 43[39m
+[31m-    highlightCount: 43[39m
+[32m+    highlightCount: 42[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://rws511.pbworks.com/w/file/fetch/135165597/Thompson%20Totally%20Digitally%20Close.pdf: {
+[31m-    annotationCount: 28[39m
+[32m+    annotationCount: 27[39m
+[31m-    highlightCount: 28[39m
+[32m+    highlightCount: 26[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://sg.inflibnet.ac.in/bitstream/10603/36846/8/13%20chapter-2.pdf: {
+[31m-    error: "Navigation Timeout Exceeded: 30000ms exceeded"[39m
+[32m+    annotationCount: 21[39m
+[32m+    highlightCount: 21[39m
+[32m+    orphanCount: 0[39m
+   }
+   https://sg.inflibnet.ac.in/bitstream/10603/36846/9/14%20chapter-3.pdf: {
+[31m-    annotationCount: null[39m
+[32m+    annotationCount: 16[39m
+[31m-    highlightCount: 0[39m
+[32m+    highlightCount: 16[39m
+[31m-    orphanCount: null[39m
+[32m+    orphanCount: 0[39m
+   }
+   https://sg.inflibnet.ac.in/bitstream/10603/36847/4/chapter-%203.pdf: {
+[31m-    error: "Navigation Timeout Exceeded: 30000ms exceeded"[39m
+[32m+    annotationCount: 59[39m
+[32m+    highlightCount: 59[39m
+[32m+    orphanCount: 0[39m
+   }
+   https://shodhganga.inflibnet.ac.in/bitstream/10603/11668/11/12_chapter2.pdf: {
+[31m-    annotationCount: 167[39m
+[32m+    annotationCount: 165[39m
+[31m-    highlightCount: 167[39m
+[32m+    highlightCount: 165[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 2[39m
+   }
+   https://shodhganga.inflibnet.ac.in/bitstream/10603/124467/11/11_chapter-2.pdf: {
+[31m-    error: "Navigation Timeout Exceeded: 30000ms exceeded"[39m
+[32m+    annotationCount: 139[39m
+[32m+    highlightCount: 139[39m
+[32m+    orphanCount: 3[39m
+   }
+   https://shodhganga.inflibnet.ac.in/bitstream/10603/125009/11/11_chapter%202.pdf: {
+[31m-    error: "Navigation Timeout Exceeded: 30000ms exceeded"[39m
+[32m+    annotationCount: 76[39m
+[32m+    highlightCount: 76[39m
+[32m+    orphanCount: 0[39m
+   }
+   https://shodhganga.inflibnet.ac.in/bitstream/10603/17793/8/08_chapter%203.pdf: {
+[31m-    annotationCount: null[39m
+[32m+    annotationCount: 87[39m
+[31m-    orphanCount: null[39m
+[32m+    orphanCount: 0[39m
+   }
+   https://shodhganga.inflibnet.ac.in/bitstream/10603/5010/9/09_chapter%202.pdf: {
+[31m-    annotationCount: 135[39m
+[32m+    annotationCount: null[39m
+[31m-    highlightCount: 135[39m
+[32m+    highlightCount: 0[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: null[39m
+   }
+   https://shodhganga.inflibnet.ac.in/bitstream/10603/75334/11/11_chapter%202.pdf: {
+[31m-    annotationCount: null[39m
+[32m+    annotationCount: 123[39m
+[31m-    highlightCount: 0[39m
+[32m+    highlightCount: 123[39m
+[31m-    orphanCount: null[39m
+[32m+    orphanCount: 0[39m
+   }
+   https://shodhganga.inflibnet.ac.in/bitstream/10603/94144/11/11_chapter2.pdf: {
+[31m-    error: "Navigation Timeout Exceeded: 30000ms exceeded"[39m
+[32m+    annotationCount: 66[39m
+[32m+    highlightCount: 66[39m
+[32m+    orphanCount: 0[39m
+   }
+   https://shodhganga.inflibnet.ac.in/bitstream/10603/94145/11/11_chapter%202.pdf: {
+[31m-    annotationCount: 135[39m
+[32m+    annotationCount: null[39m
+[31m-    highlightCount: 135[39m
+[32m+    highlightCount: 0[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: null[39m
+   }
+   https://users.manchester.edu/Facstaff/SSNaragon/Online/texts/316/Epicurus,%20LetterMenoeceus.pdf: {
+[31m-    error: "Navigation Timeout Exceeded: 30000ms exceeded"[39m
+[32m+    annotationCount: 10[39m
+[32m+    highlightCount: 10[39m
+[32m+    orphanCount: 0[39m
+   }
+   https://writingspaces.org/sites/default/files/bunn--how-to-read.pdf: {
+[31m-    annotationCount: 106[39m
+[32m+    annotationCount: 105[39m
+[31m-    highlightCount: 106[39m
+[32m+    highlightCount: 105[39m
+[31m-    orphanCount: 0[39m
+[32m+    orphanCount: 1[39m
+   }
+   https://www.mv.helsinki.fi/home/aannila/arto/pmp50.pdf: {
+[31m-    error: "Navigation Timeout Exceeded: 30000ms exceeded"[39m
+[32m+    annotationCount: 29[39m
+[32m+    highlightCount: 29[39m
+[32m+    orphanCount: 5[39m
+   }
+   https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3134895/pdf/jivr-02-01.pdf: {
+[31m-    highlightCount: 32[39m
+[32m+    highlightCount: 31[39m
+   }
+   https://www.nlm.nih.gov/exhibition/theliteratureofprescription/exhibitionAssets/digitalDocs/The-Yellow-Wall-Paper.pdf: {
+[31m-    highlightCount: 110[39m
+[32m+    highlightCount: 111[39m
+   }
+   https://www.tufsd.org/cms/lib/NY02205629/Centricity/Domain/3162/rodriguez.pdf: {
+[31m-    annotationCount: null[39m
+[32m+    annotationCount: 22[39m
+[31m-    highlightCount: 0[39m
+[32m+    highlightCount: 22[39m
+[31m-    orphanCount: null[39m
+[32m+    orphanCount: 0[39m
+   }
+ }
+
+Totals for results/evaluate-results-sep-2019-pdfs.pdfjs1.json: {
+  urls: 235,
+  totalOrphans: 48,
+  totalAnnotations: 7482,
+  totalHighlights: 7349,
+  errors: 24
+}
+Totals for results/evaluate-results-sep-2019-pdfs.pdfjs2.json: {
+  urls: 235,
+  totalOrphans: 90,
+  totalAnnotations: 7691,
+  totalHighlights: 7448,
+  errors: 16
+}

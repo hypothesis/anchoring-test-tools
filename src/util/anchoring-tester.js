@@ -115,9 +115,11 @@ function countHighlightsInPage() {
  * the results of anchoring.
  */
 class AnchoringTester {
-  constructor() {
+  constructor(config = { timing: true }) {
     /** @type {puppeteer.Browser} */
     this._browser = null;
+
+    this._config = config;
 
     this._viaBaseUrl = 'https://via.hypothes.is';
   }
@@ -243,12 +245,17 @@ class AnchoringTester {
       );
     }
 
-    return {
+    const result = {
       annotationCount,
       highlightCount,
       orphanCount,
-      anchorTime,
     };
+
+    if (this._config.timing) {
+      result.anchorTime = anchorTime;
+    }
+
+    return result;
   }
 
   _getProxyUrl(url, mode) {

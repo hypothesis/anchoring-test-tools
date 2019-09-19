@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Basic end-to-end test for `bin/evaluate`.
+# Exits with zero status if successful or non-zero otherwise.
+
+set -eu
+
+rm -rf /tmp/results.json
+echo https://docdrop.org/static/drop-pdf/Standridge2002-tTFmM.pdf > /tmp/url-list.txt
+bin/evaluate --no-timing --output /tmp/results.json /tmp/url-list.txt via
+cmp /tmp/results.json test/e2e/baselines/expected-evaluate-results.json
